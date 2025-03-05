@@ -1,0 +1,52 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-sygpre
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: sygpre
+      MYSQL_USER: artisale_user
+      MYSQL_PASSWORD: securepassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - laravel_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpassword"]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+
+  app:
+    image: ghcr.io/artisale-tg/api-artisale:latest
+    container_name: laravel-sygpre
+    restart: unless-stopped
+    env_file:
+      - .env
+    working_dir: /var/app/prod/sygpre
+    volumes:
+      - /var/app/prod/sygpre:/var/app/prod/sygpre
+    networks:
+      - laravel_network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-sygpre
+    restart: unless-stopped
+    ports:
+      - "9098:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - laravel_network
+
+
+volumes:
+  mysql_data:
+
+networks:
+  laravel_network:
+    driver: bridge

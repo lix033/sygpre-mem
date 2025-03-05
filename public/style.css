@@ -1,0 +1,94 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f2f5; /* Couleur de fond douce */
+}
+
+.row {
+  display: flex;
+  gap: 20px; /* Distance entre les deux conteneurs */
+  align-items: center;
+  justify-content: center;
+}
+
+.scanner-container,
+.result-wrapper {
+  width: 500px;
+  height: 500px;
+  background-color: #fff; /* Fond blanc */
+  border-radius: 15px; /* Bords arrondis */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre douce */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-container {
+  width: 90%; /* Ajustement à l'intérieur du conteneur */
+  height: 90%;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre intérieure subtile */
+}
+
+.photo {
+  width: 250px;
+  height: 250px;
+  background-color: #ddd;
+  background-size: cover;
+  /* border-radius: 50%; */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre pour la photo */
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+#reader {
+  width: 100%;
+  height: 100%;
+}
+
+p {
+  margin: 5px 0;
+}
+.alert {
+  margin-top: 15px;
+  width: 100%;
+  text-align: center;
+}
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  padding: 10px;
+}
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 10px;
+}
